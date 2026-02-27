@@ -1,5 +1,7 @@
 <script lang="ts">
   import { invoke } from "@tauri-apps/api/core";
+  import Sidebar from "$lib/Sidebar.svelte";
+  import "../app.css";
 
   let name = $state("");
   let greetMsg = $state("");
@@ -12,23 +14,42 @@
 
   let results = [];
 
-  function handleInput(event) {
-    const query = event.target.value;
-    results = filterData(query);
-  }
+  // function handleInput(event) {
+  //   const query = event.target.value;
+  //   results = filterData(query);
+  // }
+
+  // function openPlaylist() {}
 </script>
 
-<main class="container">
-  <form class="row top" onsubmit={greet}>
-    <input
-      type="search"
-      oninput={handleInput}
-      id="search-query"
-      placeholder="Enter a song title / lyric..."
-      bind:value={name}
-    />
-  </form>
-</main>
+<slot />
+<!-- Search bar -->
+
+<div class="row-top">
+  <input
+    type="search"
+    id="search-query"
+    placeholder="Enter a song title / lyric..."
+    bind:value={name}
+  />
+</div>
+
+<!-- main site -->
+<div class="container">
+  <div class="sidebar-wrapper">
+    <Sidebar />
+  </div>
+
+  <div class="main">
+    <div class="content">
+      <p>Search results appear here</p>
+    </div>
+  </div>
+
+  <div class="right-panel">
+    <p>Friend activity/notifs/queue, etc.</p>
+  </div>
+</div>
 
 <style>
   :root {
@@ -48,22 +69,44 @@
   }
 
   .container {
-    margin: 0;
-    padding-top: 10vh;
-    display: flex;
+    padding-top: 10px;
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
+    text-align: center; */
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 100px auto;
+    gap: 5px;
+  }
+
+  .sidebar-wrapper {
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 8px;
+    grid-column: 1;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
   }
 
   .row {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     display: flex;
     justify-content: center;
   }
 
-  .search-bar {
+  .row-top {
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    /* background-color: #5ccdaf; */
+    z-index: 1000;
   }
 
   input,
