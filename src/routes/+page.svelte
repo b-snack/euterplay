@@ -1,6 +1,5 @@
 <script lang="ts">
-  // imports go here
-  // e.g. import { invoke } from '@tauri-apps/api/core'
+  import Searchbar from "$lib/Searchbar.svelte";
 
   let value = $state("");
 
@@ -9,14 +8,15 @@
   }
 </script>
 
+<Searchbar />
+
 <main>
   <h1>Title</h1>
-
-  <!-- content here -->
 </main>
 
 <style>
   main {
-    /* styles */
+    margin-top: 80px;
+    padding: 2rem;
   }
 </style>
