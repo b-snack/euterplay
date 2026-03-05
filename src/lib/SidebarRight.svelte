@@ -1,19 +1,22 @@
 <script lang="ts">
   import Searchbar from "$lib/Searchbar.svelte";
-  import Sidebar from "$lib/SidebarLeft.svelte";
 
   let value = $state("");
 
   async function handleAction() {
-    // your logic here
+    // array.forEach((element) => {});
   }
 </script>
 
 <Searchbar />
 
-<main></main>
+<div class="Sidebar">// recently listened songs & Queue</div>
 
 <style>
-  main {
+  .Sidebar {
+    justify-content: left;
+  }
+  ul {
+    padding: 8px;
   }
 </style>
