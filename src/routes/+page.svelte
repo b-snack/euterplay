@@ -1,5 +1,6 @@
 <script lang="ts">
   import Searchbar from "$lib/Searchbar.svelte";
+  import Sidebar from "$lib/Sidebar.svelte";
 
   let value = $state("");
 
@@ -10,13 +11,9 @@
 
 <Searchbar />
 
-<main>
-  <h1>Title</h1>
-</main>
+<main></main>
 
 <style>
   main {
-    margin-top: 80px;
-    padding: 2rem;
   }
 </style>
